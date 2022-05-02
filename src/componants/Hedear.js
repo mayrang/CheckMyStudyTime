@@ -1,8 +1,18 @@
 
 
-const Header = () => {
+const Header = ({headText, leftChild, rightChild}) => {
     return (
-        <div></div>
+        <header>
+            <div className="headBtnLeft">
+                {leftChild}
+            </div>
+            <div className="headText">
+                {headText}
+            </div>
+            <div className="headBtnRight">
+                {rightChild}
+            </div>
+        </header>
     );
 };
 

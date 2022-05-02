@@ -1,0 +1,174 @@
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Yeon+Sung&display=swap");
+
+/* font-family: 'Nanum Pen Script', cursive; */
+/* font-family: 'Yeon Sung', cursive; */
+
+body {
+  background-color: #f6f6f6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Nanum Pen Script";
+  min-height: 100vh;
+  margin: 0px;
+}
+
+@media (min-width: 650px) {
+  .App {
+    width: 640px;
+  }
+}
+
+@media (max-width: 650px) {
+  .App {
+    width: 90vw;
+  }
+}
+
+#root {
+  background-color: white;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.App {
+  min-height: 100vh;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+
+.Button {
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+
+  font-size: 18px;
+  white-space: nowrap;
+  font-family: "Nanum Pen Script";
+}
+
+.Button_default {
+  background-color: #ececec;
+  color: black;
+}
+
+.Button_positive {
+  background-color: #64c964;
+  color: white;
+}
+
+.Button_negative {
+  background-color: #fd565f;
+  color: white;
+}
+
+header {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #e2e2e2;
+}
+
+header > div {
+  display: flex;
+}
+
+header .headText {
+  width: 50%;
+  font-size: 25px;
+  justify-content: center;
+}
+
+header .headBtnLeft {
+  width: 25%;
+  justify-content: start;
+}
+
+header .headBtnRight {
+  width: 25%;
+  justify-content: end;
+}
+
+header button {
+  font-family: "Nanum Pen Script";
+}
+
+
+.studyList .menuWrapper {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .studyList .menuWrapper .rightCol {
+    flex-grow: 1;
+  }
+  
+  .studyList .menuWrapper .rightCol button {
+    width: 100%;
+  }
+  
+  .studyList .ControlMenu {
+    margin-right: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ececec;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    cursor: pointer;
+    font-family: "Nanum Pen Script";
+    font-size: 10px;
+  }
+
+
+  .studyEditor {
+
+}
+
+.studyEditor section {
+  margin-bottom: 40px;
+}
+
+.studyEditor h4 {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.studyItem {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #e2e2e2;
+    display: flex;
+    justify-content: space-between;
+  }
+
+
+  .studyItem .infoWrapper {
+    flex-grow: 1;
+    margin-left: 20px;
+    cursor: pointer;
+  }
+  
+  .studyItem .studyDate {
+    font-weight: bold;
+    font-size: 25px;
+    margin-bottom: 5px;
+  }
+  
+  .studyItem .studyTime {
+    font-size: 15px;
+  }
+  
+  .studyItem .btnWrapper {
+    min-width: 70px;
+  }
+
+  
