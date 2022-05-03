@@ -8,7 +8,7 @@ const Home = () => {
     const dataList = useContext(DataStateContext);
     const [month, setMonth] = useState(new Date());
     const [data, setData] = useState([]);
-    const headerText = `${month.getFullYear()}년 ${month.getMonth() + 1}`;
+    const headerText = `${month.getFullYear()}년 ${month.getMonth() + 1}월`;
     useEffect(() => {
         const firstDay = new Date(month.getFullYear(), month.getMonth(), 1).getTime();
         const lastDay = new Date(month.getFullYear(), month.getMonth() + 1, 0, 23, 59, 59).getTime();
@@ -16,11 +16,11 @@ const Home = () => {
     }, [dataList, month]);
 
     const increaseMonth = useCallback(() => {
-        setMonth(new Date(month.getFullYear(), month.getMonth + 1));
+        setMonth(new Date(month.getFullYear(), month.getMonth() + 1));
     }, [month]);
 
     const decreaseMonth = useCallback(() => {
-        setMonth(new Date(month.getFullYear(), month.getMonth - 1));
+        setMonth(new Date(month.getFullYear(), month.getMonth() - 1));
     }, [month]);
 
     return (

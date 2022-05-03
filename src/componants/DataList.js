@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "./Button";
 import DataItem from "./DataItem";
@@ -42,11 +42,10 @@ const DataList = ({dataList}) => {
                 <div className="rightCol">
                     <Button type={"positive"} text={"공부 시작하기"} onClick={() => {navigate("/start_study")}} />
                 </div>
-                <div>
-                    {getSortedDataList.map((it) => <DataItem key={it.id} id={it.id} date={it.date} time={it.time} />)}
-                </div>
+               
                 
             </div>
+            {getSortedDataList.map((it) => <DataItem key={it.id} id={it.id} date={it.date} time={it.time} />)}
         </div>
     )
 }

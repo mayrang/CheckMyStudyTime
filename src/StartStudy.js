@@ -1,10 +1,28 @@
-import { useEffect, useState} from 'react';
+import { useCallback, useContext, useEffect, useState} from 'react';
+import { useNavigate } from 'react-router-dom';
+import { DataDispatchContext } from './App';
+import Button from './componants/Button';
+
+// const musicList = [
+//     {name: "리스항구", src: process.env.PUBLIC_URL + "/assets/bgm/AboveTheTreetops.mp3"},
+//     {name: "루디브리엄", src: process.env.PUBLIC_URL + "/assets/bgm/FantasticThinking.mp3"},
+
+// ]
+
+// const SelectMusic = () => {
+    
+// }
+
 
 const StartStudy = () => {
 
     const [isActive, setIsActive] = useState(false);
     const [isPaused, setIsPaused] = useState(true)
     const [time, setTime] = useState(0);
+    const {onCreate} = useContext(DataDispatchContext);
+    const navigate = useNavigate();
+
+    
 
     useEffect(() => {
         let interval = null;
@@ -33,6 +51,13 @@ const StartStudy = () => {
         setIsActive(false);
         setTime(0);
     };
+
+    const handleCreate = useCallback(() => {
+        const date = new Date().getTime();
+        console.log(date);
+        onCreate(time, date);
+        navigate("/", {replace:true});
+    },[time]);
     
     return (
         <div className="studyEditor">
@@ -49,7 +74,7 @@ const StartStudy = () => {
       <button onClick={handlePauseResume}>{isPaused ? "Resume" : "Pause"}</button>
       <button onClick={handleReset}>Reset</button>
             </section>
-            <button onClick={()=>{console.log(time)}} >콘솔</button>
+            <Button text={"저장하기"} type={"positive"} onClick={handleCreate} />
         </div>
     );
 };
