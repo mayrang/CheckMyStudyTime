@@ -72,7 +72,7 @@ const StartStudy = () => {
       
       <button onClick={handleStart} disabled={isActive ? "disabled" : ""}>Start</button>
       <button onClick={handlePauseResume}>{isPaused ? "Resume" : "Pause"}</button>
-      <button onClick={handleReset}>Reset</button>
+      <Button onClick={handleReset} text={"Reset"} type={"negative"} />
             </section>
             <Button text={"저장하기"} type={"positive"} onClick={handleCreate} />
         </div>
