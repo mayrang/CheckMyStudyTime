@@ -3,15 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { DataDispatchContext } from './App';
 import Button from './componants/Button';
 
-// const musicList = [
-//     {name: "리스항구", src: process.env.PUBLIC_URL + "/assets/bgm/AboveTheTreetops.mp3"},
-//     {name: "루디브리엄", src: process.env.PUBLIC_URL + "/assets/bgm/FantasticThinking.mp3"},
-
-// ]
-
-// const SelectMusic = () => {
-    
-// }
 
 
 const StartStudy = () => {
@@ -71,6 +62,7 @@ const StartStudy = () => {
       </div>
       
       <button onClick={handleStart} disabled={isActive ? "disabled" : ""}>Start</button>
+      
       <button onClick={handlePauseResume}>{isPaused ? "Resume" : "Pause"}</button>
       <Button onClick={handleReset} text={"Reset"} type={"negative"} />
             </section>

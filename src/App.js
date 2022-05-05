@@ -36,9 +36,10 @@ function App() {
   if(localdata){
     const sortedData = JSON.parse(localdata).sort((a, b) => parseInt(b.id) - parseInt(a.id));
     if(sortedData.length > 0){
+      idRef.current = parseInt(sortedData[0].id + 1);
       dispatch({type: "INIT", data: sortedData});
       console.log(data);
-      idRef.current = parseInt(data[0].id + 1);
+      
     }
   }
   }, []);
