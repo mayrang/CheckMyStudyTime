@@ -1,10 +1,10 @@
 
 
-const Button = ({type, text, onClick}) => {
+const Button = ({type, text, onClick, option}) => {
     const filtered_type = ["positive", "negative"].includes(type) ? type : "default";
-
+    const filtered_option = option ? "disabled" : ""
     return (
-        <button className={`Button Button_${filtered_type}`}  onClick={onClick}>
+        <button className={`Button Button_${filtered_type}`}  onClick={onClick} disabled={filtered_option}>
             {text}
         </button>
     )

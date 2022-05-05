@@ -38,7 +38,6 @@ function App() {
     if(sortedData.length > 0){
       idRef.current = parseInt(sortedData[0].id + 1);
       dispatch({type: "INIT", data: sortedData});
-      console.log(data);
       
     }
   }

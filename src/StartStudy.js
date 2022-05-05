@@ -1,7 +1,22 @@
-import { useCallback, useContext, useEffect, useState} from 'react';
+import React, { useCallback, useContext, useEffect, useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import { DataDispatchContext } from './App';
 import Button from './componants/Button';
+import ReactAudioPlayer from 'react-audio-player';
+
+const musicList = [
+    {name: "test1", value:"test1.mp3"},
+    {name: "test2", value:"test2.mp3"},
+    {name: "test3", value:"test3.mp3"}
+]
+
+const SelectMusic = React.memo(({optionList, onChange, value}) => {
+    return (
+        <select className="ControlMenu" value={value} onChange={(e) => onChange(e.target.value)} >
+            {optionList.map((it, idx) => <option value={it.value} key={idx}>{it.name}</option>)}
+        </select>
+    )
+});
 
 
 
@@ -10,9 +25,9 @@ const StartStudy = () => {
     const [isActive, setIsActive] = useState(false);
     const [isPaused, setIsPaused] = useState(true)
     const [time, setTime] = useState(0);
+    const [music, setMusic] = useState("test1.mp3")
     const {onCreate} = useContext(DataDispatchContext);
     const navigate = useNavigate();
-
     
 
     useEffect(() => {
@@ -28,6 +43,7 @@ const StartStudy = () => {
             clearInterval(interval);
         }
     }, [isActive, isPaused]);
+
 
     const handleStart = () => {
         setIsActive(true);
@@ -45,15 +61,24 @@ const StartStudy = () => {
 
     const handleCreate = useCallback(() => {
         const date = new Date().getTime();
-        console.log(date);
         onCreate(time, date);
         navigate("/", {replace:true});
     },[time]);
-    
+
+  
+
     return (
+        <>
         <div className="studyEditor">
             <section>
                 <h4>음악재생</h4>
+                    <div>
+                    <SelectMusic value={music} onChange={setMusic} optionList={musicList} />
+                    </div>
+                    <br/>
+                    <div>
+                    <ReactAudioPlayer src={process.env.PUBLIC_URL + `/assets/bgm/${music}`} loop={true} controls/>
+                    </div>
             </section>
             <section>
                 <h4>공부시간</h4>
@@ -61,13 +86,18 @@ const StartStudy = () => {
         <span>{parseInt(time/3600)}</span>:<span>{parseInt((time%3600)/60)}</span>:<span>{parseInt(time%60)}</span>
       </div>
       
-      <button onClick={handleStart} disabled={isActive ? "disabled" : ""}>Start</button>
+      <button onClick={handleStart} disabled={isActive ? "disabled" : ""} className="Button Button_positive">Start</button>
+  
       
-      <button onClick={handlePauseResume}>{isPaused ? "Resume" : "Pause"}</button>
+      <button onClick={handlePauseResume} className="Button Button_default">{isPaused ? "Resume" : "Pause"}</button>
+
+
       <Button onClick={handleReset} text={"Reset"} type={"negative"} />
             </section>
             <Button text={"저장하기"} type={"positive"} onClick={handleCreate} />
-        </div>
+    </div>
+
+    </>
     );
 };
 
