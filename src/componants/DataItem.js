@@ -18,7 +18,7 @@ const DataItem = ({id, date, time}) => {
         <div className="studyItem">
             <div className="infoWrapper">
                 <div className="studyDate">
-                    {`${new Date(date).getMonth()}월 ${new Date(date).getDate()}일`}
+                    {`${new Date(date).getMonth() + 1}월 ${new Date(date).getDate()}일`}
                 </div>
                 <div className="studyTime">
                     {`${parseInt(time/3600)} : ${parseInt((time%3600)/60)} : ${parseInt(time%60)}`}

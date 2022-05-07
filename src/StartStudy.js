@@ -1,8 +1,7 @@
-import React, { useCallback, useContext, useEffect, useState} from 'react';
+import React, { useCallback, useContext, useEffect, useRef, useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import { DataDispatchContext } from './App';
 import Button from './componants/Button';
-import ReactAudioPlayer from 'react-audio-player';
 
 const musicList = [
     {name: "test1", value:"test1.mp3"},
@@ -25,7 +24,8 @@ const StartStudy = () => {
     const [isActive, setIsActive] = useState(false);
     const [isPaused, setIsPaused] = useState(true)
     const [time, setTime] = useState(0);
-    const [music, setMusic] = useState("test1.mp3")
+    const [music, setMusic] = useState("test1.mp3");
+    const audioRef = useRef();
     const {onCreate} = useContext(DataDispatchContext);
     const navigate = useNavigate();
     
@@ -65,7 +65,14 @@ const StartStudy = () => {
         navigate("/", {replace:true});
     },[time]);
 
-  
+    const handleMusic = useCallback((value) => {
+        const audio = document.getElementById("audio")
+        setMusic(value);
+        audio.load();
+        audio.oncanplaythrough = () =>{
+            audio.play()
+        }
+    }, []);
 
     return (
         <>
@@ -73,11 +80,12 @@ const StartStudy = () => {
             <section>
                 <h4>음악재생</h4>
                     <div>
-                    <SelectMusic value={music} onChange={setMusic} optionList={musicList} />
-                    </div>
+                    <SelectMusic value={music} onChange={handleMusic} optionList={musicList} />
+                    </div> 
                     <br/>
                     <div>
-                    <ReactAudioPlayer src={process.env.PUBLIC_URL + `/assets/bgm/${music}`} loop={true} controls/>
+                        <audio src={process.env.PUBLIC_URL + `/assets/bgm/${music}`} loop controls id="audio"></audio>
+                       
                     </div>
             </section>
             <section>
