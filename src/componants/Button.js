@@ -1,4 +1,4 @@
-
+import React from "react";
 
 const Button = ({type, text, onClick, option}) => {
     const filtered_type = ["positive", "negative"].includes(type) ? type : "default";
@@ -10,4 +10,4 @@ const Button = ({type, text, onClick, option}) => {
     )
 }
 
-export default Button;
+export default React.memo(Button);

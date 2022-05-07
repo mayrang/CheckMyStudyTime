@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import React, { useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "./Button";
 import DataItem from "./DataItem";
@@ -13,14 +13,14 @@ const optionList = [
     name: "오래된 순"
 }]
 
-const SortMenu = ({optionList, onChange, value}) => {
+const SortMenu = React.memo(({optionList, onChange, value}) => {
     return (
         <select className="ControlMenu" value={value} onChange={(e) => onChange(e.target.value)} >
             {optionList.map((it,idx) => <option key={idx} value={it.value}>{it.name}</option>)}
 
         </select>
     )
-}
+});
 
 const DataList = ({dataList}) => {
     const [sort, setSort] = useState("latest");
@@ -50,4 +50,4 @@ const DataList = ({dataList}) => {
     )
 }
 
-export default DataList;
+export default React.memo(DataList);

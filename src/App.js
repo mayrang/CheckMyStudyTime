@@ -1,7 +1,6 @@
 import {Routes, Route, BrowserRouter} from "react-router-dom";
 import './App.css';
 import StartStudy from "./StartStudy";
-import CheckStudy from "./CheckStudy";
 import Home from "./Home";
 import React, { useCallback, useEffect, useReducer, useRef, useMemo } from "react";
 
@@ -71,7 +70,6 @@ function App() {
       <Routes>
         <Route path={"/"} element={<Home />} />
         <Route path={"/start_study"} element={<StartStudy />} />
-        <Route path={"/check_study/:id"} element={<CheckStudy />} />
       </Routes>
     </BrowserRouter>
     </DataDispatchContext.Provider>

@@ -1,4 +1,4 @@
-import { useCallback, useContext } from "react";
+import React, { useCallback, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { DataDispatchContext } from "../App";
 
@@ -31,4 +31,4 @@ const DataItem = ({id, date, time}) => {
     )
 }
 
-export default DataItem;
+export default React.memo(DataItem);
